@@ -1,0 +1,2882 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Roboto+Mono&display=swap&family=Oswald:wght@300;600&family=Lobster&display=swap');
+*{
+  margin: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+body{
+  position: relative;
+  min-height: 100vh;
+  background-color:#151513;
+}
+
+/* Media Queries*/
+
+@media(max-width:600px){
+  .navbar{
+    position: absolute;
+    min-width: 100vw;
+    height: 15vh;
+    background-color:#000000;
+    border-bottom: 1px solid #000000;
+    overflow: hidden;
+  }
+  
+  .navbar-home{
+    position: absolute;
+    width: 100vw;
+    height: 20vh;
+    background-color:transparent;
+    z-index: 1;
+  }
+  
+  .logo{
+    position: absolute;
+    font-size: 2.5rem;
+    top: 5vh;
+    left: 2.5vw;
+    cursor: pointer;
+  }
+  .title{
+    position: absolute;
+    top: 6.5vh;
+    left: 13vw;
+    color: aliceblue;
+    font-family: 'Lobster', cursive;
+    font-size: 1.5rem;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .search-bar{
+    text-align: center;
+    position: absolute;
+    padding: 1vw 1vw;
+    width: 15vw;
+    top: 6.5vh;
+    left: 39vw;
+    border-radius: 1rem;
+    border: .1rem solid #005866;
+    outline-style: none;
+    cursor: pointer;
+    font-size: .75rem;
+  }
+  
+  .search-bar-home{
+    text-align: center;
+    position: absolute;
+    padding: 1vw 1vw;
+    width: 20vw;
+    top: 6.75vh;
+    left: 36.5vw;
+    background-color: transparent;
+    border: none;
+    outline-style: none;
+    cursor: pointer;
+    color: white;
+    font-size: .75rem;
+  }
+  
+  .search-bar-home ::placeholder{
+    color: white;
+    font-size: .25rem;
+  }
+  
+  .search-bar:hover{
+    border: .15rem solid #005866;
+    transition: .5s;
+  }
+
+  .navbar .movies{
+    position: absolute;
+    font-size: 1rem;
+    top: 7vh;
+    right: 32vw;
+    color: aliceblue;
+    font-family: 'Josefin Sans', sans-serif;
+    cursor: pointer;
+  }
+
+  .navbar .tvshows{
+    position: absolute;
+    font-size: 1rem;
+    top: 7vh;
+    right: 13vw;
+    color: aliceblue;
+    font-family: 'Josefin Sans', sans-serif;
+    cursor: pointer;
+  }
+
+  .movies{
+    position: absolute;
+    font-size: 1rem;
+    top: 6.75vh;
+    right: 31.5vw;
+    color: aliceblue;
+    font-family: 'Josefin Sans', sans-serif;
+    cursor: pointer;
+  }
+
+  .tvshows{
+    position: absolute;
+    font-size: 1rem;
+    top: 6.75vh;
+    right: 13.5vw;
+    color: aliceblue;
+    font-family: 'Josefin Sans', sans-serif;
+    cursor: pointer;
+  }
+
+  .navbar-home .login{
+    position: absolute;
+    font-size: 1rem;
+    top: 6.75vh;
+    right: 2vw;
+    color: aliceblue;
+    font-family: 'Josefin Sans', sans-serif;
+    cursor: pointer;
+  }
+
+  .login{
+    position: absolute;
+    font-size: 1rem;
+    top: 7vh;
+    right: 2vw;
+    color: aliceblue;
+    font-family: 'Josefin Sans', sans-serif;
+    cursor: pointer;
+  }
+  
+  .navbar-home .avatar-dropdown{
+    height: 20vh;
+    position: relative;
+    left: 90vw;
+    bottom: 2.5vh;
+  }
+
+  .navbar-home .avatar{
+    position: relative;
+    top: 1vw;
+    width:5vw;
+    height:5vw;
+    right: 4vw;
+  }
+  
+  .navbar .avatar{
+    position: relative;
+    width:5vw;
+    height:5vw;
+    bottom: 5vh;
+  }
+  
+  .wl-link{
+    text-decoration: none;
+    color: black;
+  }
+  
+  .wl-link:hover{
+    color: black;
+  }
+  
+  .button{
+    background-color: #005866;
+    color: #FFFFFF;
+  }
+  
+  .movies:hover,.title:hover,.tvshows:hover,.login:hover,.avatar:hover{
+    color: #005866;
+    opacity: .8;
+    transition: .5s;
+  }
+
+  .pagination{
+    position: relative;
+    margin-top: 2.5vw;
+    left: 17.5%;
+    color: white;
+  }
+  
+  /* Detail-view */
+  
+  .title-box{
+    width: 95vw;
+    max-height: 20vw;
+    position: absolute;
+    top:15vh;
+    left:5vw;
+  }
+
+  .d-title{
+    font-size: 1.5rem;
+    position: relative;
+    top:0 ;
+    left: 0;
+    color:#FFFFFF;
+  }
+  
+  .d-rating{
+    display: none;
+  }
+  
+  .d-rate{
+    position: absolute;
+    left: 7.5vw;
+    font-size: 1.25rem;
+    top: 175vw;
+    color: #005866;
+  }
+  
+  .d-ratingno{
+    position: absolute;
+    color: #FFFFFF;
+    font-size: 1.15rem;
+    left: 15vw;
+    top: 174.5vw;
+    font-weight: bolder;
+  }
+  
+  .total-score{
+    display: none;
+  }
+  
+  .total-vote{
+    position: absolute;
+    color: #d8d2d2;
+    font-size: 1rem;
+    left:11vw;
+    top: 180.5vw;
+  }
+  
+  .u-rating{
+    display: none;
+  }
+  
+  .u-rate{
+    position: absolute;
+    top: 3vh;
+    left: 3.5vw;
+    color: #005866;
+  }
+  
+  .rate{
+    position: absolute;
+    color: #005866;
+    font-size: 1rem;
+    left: 23.5vw;
+    top: 171.5vw;
+    font-weight: 700;
+    outline-style: none;
+    background-color:#151513;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+    width: 30vw;
+    height: 10vh;
+    overflow: hidden;
+  }
+  
+  .user-rating{
+    width: 20vw;
+    height: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .d-info{
+    position: absolute;
+    left: 5vw;
+    top: 50vw;
+    color:#d8d2d2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 55vw;
+  }
+  
+  .inactive{
+    display: none;
+  }
+  
+  .active{
+    display: flex;
+  }
+  
+  .rating-form{
+    position: absolute;
+    background-color:#3d3d3b;
+    color: #FFFFFF;
+    width: 100vw;
+    height: 50vh;
+    top: 40vh;
+    left: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  
+.clear{
+  position:absolute;
+  top:5px;
+  right:5px;
+  cursor:pointer;
+  color:white;
+}
+
+.rate-this{
+  position:absolute;
+  top:5vh;
+  color:white;
+  font-size: 1.25rem;
+}
+
+.rating-title{
+  position:absolute;
+  top: 12.5vh;
+  color:white;
+  font-size: 1.5rem;
+}
+
+.rating-value{
+  position:absolute;
+  top:20vh;
+  width:75vw;
+  height:10vh;
+  color:#005866;
+}
+
+.rate-button{
+  position:absolute;
+  top:5vh;
+  width:10vw;
+  height:7.5vh;
+}
+  
+.poster-area{
+  position:absolute;
+  display:flex;
+  top:60vw;
+  width:100vw;
+}
+
+.poster{
+  position: relative;
+  left: 5vw;
+  z-index: -1;
+}
+
+.poster-img{
+  width: 60vw;
+  height: 35vw;
+}
+
+.similar-genre-image{
+  width: 15vw;
+  height: 10vw;
+}
+
+  .d-genres{
+    position:absolute;
+    top:96.5vw;
+    left:5vw;
+    width:95vw;
+    height:5vh;
+  }
+
+  .add-watchlist{
+    background-color:#005866;
+    color: white;
+    position:absolute;
+    top:175vw;
+    left:47.5vw;
+    width:50vw;
+    height:10vw;
+    outline-style: none;
+    border: 1px solid #005866;
+    border-radius: 5px;
+  }
+
+  .d-details{
+    position:absolute;
+    top:106vw;
+    left:5vw;
+    width:95vw;
+    max-height: 30vh;
+  }
+
+  hr{
+    color:white;
+  }
+  
+  .details-header{
+    font-size: 1.25rem;
+    color:white;
+    font-weight:700
+  }
+  
+  .details-name{
+    position:relative;
+    color:white;
+    font-weight:500;
+  }
+  
+  .director-info{
+    display:flex;
+    align-items:center;
+    gap:2vw;
+  }
+  
+  .cast{
+    position:relative;
+    display:flex;
+  }
+  
+  .cast-info{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-evenly;
+    align-items:center;
+    width:90vw;
+  }
+
+  .d-reviews-box{
+    position:absolute;
+    width:100vw;
+    top:200vw;
+  }
+
+  .reviews-box{
+    position: relative;
+    left: 5vw;
+    width: 95vw;
+  }
+
+  .d-reviews{
+    display: grid;
+    row-gap: 5vw;
+    width:95vw;
+  }
+
+  .review-form{
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+  }
+  
+  .review-form textarea{
+    width:65vw;
+    height:5vh;
+    outline-style:none;
+  }
+  
+  .review-card{
+    position:relative;
+    background-color:black;
+    width:95vw;
+    padding:1.5vw 3.5vw;
+  }
+  
+  .author-info{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    gap:2.5vw;
+    width:85vw;
+    height:15vh;
+    color:white;
+    font-weight:500;
+    font-size:1.25rem;
+  }
+
+  .author-avatar{
+    width: 5vw;
+    height:5vw;
+}
+  
+  .r-remove-button{
+    position:absolute;
+    left: 22.5vw;
+    bottom: 2.5vw;
+    width:1vw;
+    height: 2.5vh;
+    overflow: hidden;
+  }
+  
+  .review-content{
+    color:white;
+    font-weight:500;
+    position:relative;
+    width:85vw;
+  }
+  
+  /*Watchlist*/
+  
+  .watchlist-star{
+    position: absolute;
+    right: 10vw;
+    top: 2vw;
+    font-size: 1.5rem;
+    color: #005866;
+  }
+
+  .watchlist-rating{
+    position:absolute;
+    right: 2.5vw;
+    top: 1.5vw;
+    font-size:1.25rem;
+  }
+  
+  .watchlist-rating-total{
+    display: none;
+  }
+
+  .watchlist-box{
+    position:absolute;
+    top:15vh;
+    width:100vw;
+    left: 0;
+  }
+
+  .watchlist-title{
+    display: flex;
+    flex-wrap: wrap;
+    width: 57.5vw;
+    height: 15vw;
+    font-size: 1.25rem;
+    overflow: hidden;
+  }
+
+  .watchlist-info{
+  position: relative;
+  top: 2.5vw;
+  display: flex;
+  width: 75vw;
+  min-height:4.5vh;
+  }
+  
+  .watchlist-header{
+    height:10vh;
+    display:grid;
+    place-items:center;
+    background-color:#000000;
+    color:white;
+  }
+  
+  .watchlist-card{
+    position:relative;
+    background-color:#d8d2d2;
+    width: 100vw;
+    min-height:100vw;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+
+  .watchlist-card img{
+    position: relative;
+    bottom: 25.5vw;
+    width: 20vw;
+    height: 35vw;
+  }
+
+  .watchlist-card-info{
+    width:75vw;
+    min-height:67.5vw;
+    position:absolute;
+    right:2.5vw;
+    top:5vw;
+  }
+
+  .watchlist-overview{
+    width:75vw;
+    height:40vw;
+    position:relative;
+    left: 5vw;
+    top: 5vw;
+    overflow:hidden;
+  }
+
+  .w-remove-button{
+    width:6vw;
+    position:absolute;
+    top: 37.5vw;
+    right:3vw;
+  }
+
+
+  /* Top Rated */
+  .top-rated{
+    display:grid; 
+    place-items:center;
+    position:absolute;
+    top:65vw;
+    width:100vw
+  }
+
+  .top-rated-movies-box, .top-rated-shows-box{
+    display: grid;
+    place-items: center;
+    color: white;
+    font-family:'Lobster', cursive;
+    font-size: 2rem;
+  }
+  
+  .top-rated-shows-box{
+    margin-top: 5vw;
+  }
+
+  .top-rated-movies{
+    margin-top: 7.5vw;
+  }
+  
+  .top-rated-shows{
+    margin-top: 7.5vw;
+  }
+
+  .top-rated-card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  /* Login */
+
+.login-box{
+  position: absolute;
+  top: 25vh;
+  display: grid;
+  row-gap: 5vh;
+  place-items: center;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.login-card{
+  max-width: 100vw;
+  min-height: 100vw;
+  display: grid;
+  place-items: center;
+  box-shadow:-3px 1px 144px 16px rgba(18,103,135,1) ;
+}
+
+.login-title{
+  position: relative;
+  top: 2.5vh;
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  font-family: 'Lobster', cursive;
+}
+
+.button-box{
+  display: grid;
+  place-items: center;
+  row-gap: 2.5vh;
+}
+
+/* Footer */
+
+.footer{
+  position: relative;
+  display: grid;
+  place-items: center;
+  bottom: 0;
+  margin-top: 10vw;
+  width: 100vw;
+  min-height:40vw ;
+  background-color: #000000;
+  color: white;
+  overflow: none;
+}
+
+.social-media{
+  position: relative;
+  top: 2.5vw;
+  width: 45vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 1.25rem;
+}
+
+.support{
+  position: relative;
+  top: 1.5vw;
+  font-size: 2rem;
+  font-family: 'Oswald', sans-serif;
+}
+
+.support-logo{
+  width: 15vw;
+  height: 15vw;
+}
+}
+
+@media(min-width:600px) and (max-width:992px){
+  .navbar{
+    position: absolute;
+    min-width: 100vw;
+    height: 15vh;
+    background-color:#000000;
+    border-bottom: 1px solid #000000;
+    overflow: hidden;
+  }
+  
+  .navbar-home{
+    position: absolute;
+    width: 100vw;
+    height: 15vh;
+    background-color:transparent;
+    z-index: 1;overflow: hidden;
+  }
+  
+  .logo{
+    position: absolute;
+    font-size: 4rem;
+    top: 2.5vh;
+    left: 2.5vw;
+    cursor: pointer;
+  }
+  .title{
+    position: absolute;
+    top: 5.5vw;
+    left: 13vw;
+    color: aliceblue;
+    font-family: 'Lobster', cursive;
+    font-size: 2.5rem;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .search-bar{
+    text-align: center;
+    position: absolute;
+    padding: 1vw 1vw;
+    width: 25vw;
+    top: 6.5vw;
+    left: 34.5vw;
+    border-radius: 1rem;
+    border: .1rem solid #005866;
+    outline-style: none;
+    cursor: pointer;
+    font-size: .75rem;
+  }
+  
+  .search-bar-home{
+    text-align: center;
+    position: absolute;
+    padding: 1vw 1vw;
+    width: 25vw;
+    top: 6.5vw;
+    left: 35vw;
+    background-color: transparent;
+    border: none;
+    outline-style: none;
+    cursor: pointer;
+    color: white;
+    font-size: .75rem;
+  }
+  
+  .search-bar-home ::placeholder{
+    color: white;
+    font-size: 1rem;
+  }
+  
+  .search-bar:hover{
+    border: .15rem solid #005866;
+    transition: .5s;
+  }
+
+  .navbar .movies{
+    position: absolute;
+    font-size: 1.5rem;
+    top: 7vw;
+    right: 30vw;
+    color: aliceblue;
+    font-family: 'Josefin Sans', sans-serif;
+    cursor: pointer;
+  }
+
+  .navbar .tvshows{
+    position: absolute;
+    font-size: 1.5rem;
+    top: 7vw;
+    right: 15vw;
+    color: aliceblue;
+    font-family: 'Josefin Sans', sans-serif;
+    cursor: pointer;
+  }
+
+  .movies{
+    position: absolute;
+    font-size: 1.5rem;
+    top: 7vw;
+    right: 30vw;
+    color: aliceblue;
+    font-family: 'Josefin Sans', sans-serif;
+    cursor: pointer;
+  }
+
+  .tvshows{
+    position: absolute;
+    font-size: 1.5rem;
+    top: 7vw;
+    right: 15vw;
+    color: aliceblue;
+    font-family: 'Josefin Sans', sans-serif;
+    cursor: pointer;
+  }
+
+  .navbar-home .login{
+    position: absolute;
+    font-size: 1.5rem;
+    top: 7vw;
+    right: 2.5vw;
+    color: aliceblue;
+    font-family: 'Josefin Sans', sans-serif;
+    cursor: pointer;
+  }
+
+  .login{
+    position: absolute;
+    font-size: 1.5rem;
+    top: 7vw;
+    right: 2.5vw;
+    color: aliceblue;
+    font-family: 'Josefin Sans', sans-serif;
+    cursor: pointer;
+  }
+  
+  .navbar-home .avatar-dropdown{
+    height: 12.5vh;
+    width: 12.5vw;
+    justify-content: space-evenly;
+    position: relative;
+    left: 90vw;
+  }
+
+  .navbar-home .avatar{
+    position: relative;
+    width:5vw;
+    height:5vw;
+    right: 4vw;
+  }
+  
+  .navbar .avatar{
+    position: relative;
+    width:5vw;
+    height:5vw;
+    right: 1.5vw;
+    bottom: 7vh;
+  }
+  
+  .wl-link{
+    text-decoration: none;
+    color: black;
+  }
+  
+  .wl-link:hover{
+    color: black;
+  }
+  
+  .button{
+    background-color: #005866;
+    color: #FFFFFF;
+  }
+  
+  .movies:hover,.title:hover,.tvshows:hover,.login:hover,.avatar:hover{
+    color: #005866;
+    opacity: .8;
+    transition: .5s;
+  }
+
+  .pagination{
+    position: relative;
+    margin-top: 2.5vw;
+    left: 30%;
+    color: white;
+  }
+  
+  /* Detail-view */
+  
+  .title-box{
+    width: 50vw;
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 20vw;
+    position: absolute;
+    top:15vh;
+    left:5vw;
+  }
+
+  .d-title{
+    font-size: 2.10rem;
+    position: relative;
+    top:0 ;
+    left: 0;
+    color:#FFFFFF;
+  }
+  
+  .d-rating{
+    position: absolute;
+    right: 25vw;
+    top: 15.75vh;
+    color: #FFFFFF;
+    font-size: 1.75rem;
+  }
+  
+  .d-rate{
+    position: absolute;
+    right: 38.5vw;
+    font-size: 2rem;
+    top: 19.5vh;
+    color: #005866;
+  }
+  
+  .d-ratingno{
+    position: absolute;
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    right: 32.5vw;
+    top: 19.5vh;
+    font-weight: bolder;
+  }
+  
+  .total-score{
+    position: absolute;
+    color: #d8d2d2;
+    font-size: 1.25rem;
+    right: 28.5vw;
+    top: 20vh;
+  }
+  
+  .total-vote{
+    position: absolute;
+    color: #d8d2d2;
+    font-size: 1rem;
+    right: 32.5vw;
+    top: 22.5vh;
+  }
+  
+  .u-rating{
+    position: absolute;
+    right: 5vw;
+    top: 16vh;
+    color: #FFFFFF;
+    font-size: 1.75rem;
+  }
+  
+  .u-rate{
+    position: relative;
+    left: 2vw;
+    top: .75vw;
+    color: #005866;
+  }
+  
+  
+  .rate{
+    position: absolute;
+    color: #005866;
+    font-size: 1.75rem;
+    right: 7.5vw;
+    top: 19.75vh;
+    font-weight: 700;
+    outline-style: none;
+    background-color:#151513;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    width: 15vw;
+    height: 10vw;
+    overflow: hidden;
+  }
+  
+  .user-rating{
+    width: 15vw;
+    height: 10vw;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .d-info{
+    position: absolute;
+    left: 5vw;
+    top: 35vw;
+    color:#d8d2d2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 25vw;
+  }
+  
+  .inactive{
+    display: none;
+  }
+  
+  .active{
+    display: flex;
+  }
+  
+  .rating-form{
+    position: absolute;
+    background-color:#3d3d3b;
+    color: #FFFFFF;
+    width: 100vw;
+    height: 50vh;
+    top: 40vh;
+    left: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  
+.clear{
+  position:absolute;
+  top:5px;
+  right:5px;
+  cursor:pointer;
+  color:white;
+}
+
+.rate-this{
+  position:absolute;
+  top:5vh;
+  color:white;
+  font-size: 1.25rem;
+}
+
+.rating-title{
+  position:absolute;
+  top: 12.5vh;
+  color:white;
+  font-size: 1.5rem;
+}
+
+.rating-value{
+  position:absolute;
+  top:20vh;
+  width:75vw;
+  height:10vh;
+  color:#005866;
+}
+
+.rate-button{
+  position:absolute;
+  top:5vh;
+  width:10vw;
+  height:7.5vh;
+}
+  
+.poster-area{
+  position:absolute;
+  display:flex;
+  top:40vw;
+  width:100vw;
+}
+
+.poster{
+  position: relative;
+  left: 5vw;
+  z-index: -1;
+}
+
+.poster-img{
+  width: 60vw;
+  height: 35vw;
+}
+
+.similar-genre-image{
+  width: 15vw;
+  height: 10vw;
+}
+
+  .d-genres{
+    position:absolute;
+    top:77.5vw;
+    left:5vw;
+    width:95vw;
+    height:5vh;
+  }
+
+  .add-watchlist{
+    background-color:#005866;
+    color: white;
+    position:absolute;
+    top:73.5vw;
+    left:62.5vw;
+    width:30vw;
+    height:5vw;
+    outline-style: none;
+    border: 1px solid #005866;
+    border-radius: 5px;
+  }
+
+  .d-details{
+    position:absolute;
+    top:82.5vw;
+    left:5vw;
+    width:95vw;
+    max-height: 30vh;
+  }
+
+  hr{
+    color:white;
+  }
+  
+  .details-header{
+    font-size: 1.25rem;
+    color:white;
+    font-weight:700
+  }
+  
+  .details-name{
+    position:relative;
+    color:white;
+    font-weight:500;
+  }
+  
+  .director-info{
+    display:flex;
+    align-items:center;
+    gap:2vw;
+  }
+  
+  .cast{
+    position:relative;
+    display:flex;
+  }
+  
+  .cast-info{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-evenly;
+    align-items:center;
+    width:90vw;
+  }
+
+  .d-reviews-box{
+    position:absolute;
+    width:100vw;
+    top:120vw;
+  }
+
+  .reviews-box{
+    position: relative;
+    left: 5vw;
+    width: 90vw;
+  }
+
+  .d-reviews{
+    display: grid;
+    row-gap: 2.5vw;
+    width:90vw;
+  }
+
+  .review-form{
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+  }
+  
+  .review-form textarea{
+    width:75vw;
+    height:5vh;
+    outline-style:none;
+  }
+  
+  .review-card{
+    position:relative;
+    background-color:black;
+    width:90vw;
+    padding:1vw 3.5vw;
+  }
+  
+  .author-info{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    gap:2.5vw;
+    width:100vw;
+    height:15vh;
+    color:white;
+    font-weight:500;
+    font-size:1.25rem;
+  }
+
+  .author-avatar{
+    width: 7.5vw;
+    height: 7.5vw;
+  }
+  
+  .r-remove-button{
+    position:absolute;
+    left: 22.5vw;
+    bottom: 2.5vw;
+    width:1vw;
+    height: 2.5vh;
+    overflow: hidden;
+  }
+  
+  .review-content{
+    color:white;
+    font-weight:500;
+    position:relative;
+    width:85vw;
+  }
+  
+  /*Watchlist*/
+  
+  .watchlist-star{
+    position: absolute;
+    right: 7.5vw;
+    top: 1.5vw;
+    font-size: 1.5rem;
+    color: #005866;
+  }
+
+  .watchlist-rating{
+    position:absolute;
+    right: 2.5vw;
+    top: 1.25vw;
+    font-size:1.25rem;
+  }
+  
+  .watchlist-rating-total{
+    display: none;
+  }
+
+  .watchlist-box{
+    position:absolute;
+    top:15vh;
+    width:100vw;
+  }
+
+  .watchlist-title{
+    display: flex;
+    flex-wrap: wrap;
+    width: 50vw;
+    height: 10vw;
+    font-size: 1.5rem;
+  }
+
+  .watchlist-info{
+  position: relative;
+  display: flex;
+  width: 75vw;
+  min-height:4.5vh;
+  bottom: 1.5vw;
+  }
+  
+  .watchlist-header{
+    height:10vh;
+    display:grid;
+    place-items:center;
+    background-color:#000000;
+    color:white;
+  }
+  
+  .watchlist-card{
+    position:relative;
+    background-color:#d8d2d2;
+    width: 100vw;
+    min-height:35vw;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+
+  .watchlist-card img{
+    position: relative;
+    width: 20vw;
+    height: 30vw;
+  }
+
+  .watchlist-card-info{
+    width:75vw;
+    min-height:67.5vw;
+    position:absolute;
+    right:2.5vw;
+    top:3.5vw;
+  }
+
+  .watchlist-overview{
+    width:75vw;
+    height:37.5vw;
+    position:relative;
+    left: 2.5vw;
+    top: 16vw;
+    overflow:hidden;
+  }
+
+  .w-remove-button{
+    width:6vw;
+    position:absolute;
+    top: 15vw;
+    right:3vw;
+  }
+
+
+  /* Top Rated */
+  .top-rated{
+    display:grid; 
+    place-items:center;
+    position:absolute;
+    top:65vw;
+    width:100vw
+  }
+
+  .top-rated-movies-box, .top-rated-shows-box{
+    display: grid;
+    place-items: center;
+    color: white;
+    font-family:'Lobster', cursive;
+    font-size: 2.75rem;
+  }
+  
+  .top-rated-shows-box{
+    margin-top: 5vw;
+  }
+
+  .top-rated-movies{
+    margin-top: 7.5vw;
+  }
+
+  .top-rated-shows{
+    margin-top: 7.5vw;
+  }
+
+  .top-rated-card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  /* Login */
+
+.login-box{
+  position: absolute;
+  top: 25vh;
+  display: grid;
+  place-items: center;
+  row-gap: 27.5vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.login-card{
+  max-width: 100vw;
+  min-height: 45vw;
+  display: grid;
+  place-items: center;
+  box-shadow:-3px 1px 144px 16px rgba(18,103,135,1) ;
+}
+
+.login-title{
+  position: relative;
+  top: 2.5vh;
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  font-family: 'Lobster', cursive;
+}
+
+.button-box{
+  display: grid;
+  place-items: center;
+  row-gap: 2.5vh;
+}
+
+/* Footer */
+
+.footer{
+  position: relative;
+  display: grid;
+  place-items: center;
+  bottom: 0;
+  margin-top: 5vw;
+  width: 100vw;
+  min-height:20vw ;
+  background-color: #000000;
+  color: white;
+  overflow: none;
+}
+
+.social-media{
+  position: relative;
+  top: 2.5vw;
+  width: 30vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 1.5rem;
+}
+
+.support{
+  position: relative;
+  top: 1.5vw;
+  font-size: 2.5rem;
+  font-family: 'Oswald', sans-serif;
+}
+
+.support-logo{
+  width: 7.5vw;
+  height: 7.5vw;
+}
+
+
+}
+
+@media(min-width:992px) and (max-width:1080px){
+  /* Navbar style */
+  .navbar{
+    position: absolute;
+    min-width: 100vw;
+    height: 25vh;
+    background-color:#000000;
+    border-bottom: 1px solid #000000;
+    overflow: hidden;
+  }
+  
+  .navbar-home{
+    position: absolute;
+    width: 100vw;
+    height: 25vh;
+    background-color:transparent;
+    z-index: 1;
+    overflow: hidden;
+  }
+  
+  .logo{
+    position: absolute;
+    font-size: 5rem;
+    top: 5vh;
+    left: 2.5vw;
+    cursor: pointer;
+  }
+
+  .title{
+    position: absolute;
+    top: 8.5vh;
+    left: 11vw;
+    color: aliceblue;
+    font-family: 'Lobster', cursive;
+    font-size: 3rem;
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  .search-bar{
+    text-align: center;
+    position: absolute;
+    padding: 2.5vh 0;
+    width: 30vw;
+    top: 9vh;
+    left: 30vw;
+    border-radius: 1rem;
+    border: .1rem solid #005866;
+    outline-style: none;
+    cursor: pointer;
+  }
+  
+  .search-bar-home{
+    text-align: center;
+    position: absolute;
+    padding: 2.5vh 10vw;
+    top: 9vh;
+    left: 30vw;
+    background-color: transparent;
+    border: none;
+    outline-style: none;
+    cursor: pointer;
+    color: white;
+  }
+  
+  .search-bar-home ::placeholder{
+    color: #FFFFFF;
+  }
+  
+  .search-bar:hover{
+    border: .15rem solid #005866;
+    transition: .5s;
+  }
+
+  .navbar .movies{
+    position: absolute;
+    font-size: 1.75rem;
+    top: 10vh;
+    right: 27.5vw;
+    color: aliceblue;
+    font-family: 'Josefin Sans', sans-serif;
+    cursor: pointer;
+  }
+
+  .navbar .tvshows{
+    position: absolute;
+    font-size: 1.75rem;
+    top: 10vh;
+    right: 15vw;
+    color: aliceblue;
+    font-family: 'Josefin Sans', sans-serif;
+    cursor: pointer;
+  }
+
+  .navbar .login{
+    position: absolute;
+    font-size: 1.75rem;
+    top: 10vh;
+    right: 3.5vw;
+    color: aliceblue;
+    font-family: 'Josefin Sans', sans-serif;
+    cursor: pointer;
+  }
+
+  .navbar-home .movies{
+    position: absolute;
+    font-size: 1.75rem;
+    top: 11vh;
+    right: 26.5vw;
+    color: aliceblue;
+    font-family: 'Josefin Sans', sans-serif;
+    cursor: pointer;
+  }
+
+  .navbar-home .tvshows{
+    position: absolute;
+    font-size: 1.75rem;
+    top: 11vh;
+    right: 15vw;
+    color: aliceblue;
+    font-family: 'Josefin Sans', sans-serif;
+    cursor: pointer;
+  }
+
+  .navbar-home .login{
+    position: absolute;
+    font-size: 1.75rem;
+    top: 11vh;
+    right: 3.5vw;
+    color: aliceblue;
+    font-family: 'Josefin Sans', sans-serif;
+    cursor: pointer;
+  }
+  
+  .navbar-home .avatar-dropdown{
+    position: absolute;
+    top: 1vw;
+    width: 20vw;
+    left: 87.5vw;
+    display:flex;
+    align-items: center;
+    text-align:center;
+    height:25vh;
+    overflow: hidden;
+  }
+  
+  .navbar .avatar{
+    width:7.5vh;
+    height:7.5vh;
+    margin-right: 5vw;
+    margin-bottom: 2vw;
+  }
+
+  .navbar-home .avatar{
+    width:7.5vh;
+    height:7.5vh;
+    margin-right: 5vw;
+    margin-bottom: 2.5vh;
+    overflow: hidden;
+  }
+
+.wl-link{
+  text-decoration: none;
+  color: black;
+}
+
+.wl-link:hover{
+  color: black;
+}
+
+.button{
+  background-color: #005866;
+  color: #FFFFFF;
+}
+
+.movies:hover,.title:hover,.tvshows:hover,.login:hover,.avatar:hover{
+  color: #005866;
+  opacity: .8;
+  transition: .5s;
+}
+
+.pagination{
+  position: relative;
+  margin-top: 2.5vw;
+  left: 40%;
+  color: white;
+}
+
+/* Detail-view */
+
+.title-box{
+  width: 45vw;
+  max-height: 20vh;
+  position: absolute;
+  top:25vh;
+  left:5vw;
+  font-size: 2rem;
+  color:#FFFFFF;
+}
+
+.d-rating{
+  position: absolute;
+  right: 30vw;
+  top: 26.5vh;
+  color: #FFFFFF;
+  font-size: 1.5rem;
+}
+
+.d-rate{
+  position: absolute;
+  right: 37.5vw;
+  font-size: 2rem;
+  top: 33vh;
+  color: #005866;
+}
+
+.d-ratingno{
+  position: absolute;
+  color: #FFFFFF;
+  font-size: 1.5rem;
+  right: 33.5vw;
+  top: 32.5vh;
+  font-weight: bolder;
+}
+
+.total-score{
+  position: absolute;
+  color: #d8d2d2;
+  font-size: 1.25rem;
+  right: 30vw;
+  top: 33.5vh;
+}
+
+.total-vote{
+  position: absolute;
+  color: #d8d2d2;
+  font-size: 1rem;
+  right: 33.5vw;
+  top: 38.5vh;
+}
+
+.u-rating{
+  position: absolute;
+  right: 10vw;
+  top: 26.5vh;
+  color: #FFFFFF;
+  font-size: 1.5rem;
+}
+
+.u-rate{
+  position: relative;
+  top: 1vh;
+  color: #005866;
+}
+
+.rate{
+  position: absolute;
+  color: #005866;
+  font-size: 1.5rem;
+  right: 11vw;
+  top: 32.5vh;
+  font-weight: 700;
+  outline-style: none;
+  background-color:#151513;
+  border: none;
+  display: flex;
+  justify-content:space-between;
+  width: 11vw;
+  height: 15vh;
+  overflow: hidden;
+}
+
+.user-rating{
+  width: 11vw;
+  height: 15vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.d-info{
+  position: absolute;
+  left: 5vw;
+  top: 41.5vh;
+  color:#d8d2d2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 20vw;
+}
+
+.inactive{
+  display: none;
+}
+
+.active{
+  display: flex;
+}
+
+.rating-form{
+  position: absolute;
+  background-color:#3d3d3b;
+  color: #FFFFFF;
+  width: 40vw;
+  height: 50vh;
+  top: 40vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  left:30vw;
+  overflow: hidden;
+}
+
+.clear{
+  position:absolute;
+  top:5px;
+  right:5px;
+  cursor:pointer;
+  color:white;
+}
+
+.rate-this{
+  position:absolute;
+  top:5vh;
+  color:white;
+  font-size: 1.25rem;
+}
+
+.rating-title{
+  position:absolute;
+  top: 12.5vh;
+  color:white;
+  font-size: 1.5rem;
+}
+
+.rating-value{
+  position:absolute;
+  top:20vh;
+  width:22.5vw;
+  height:10vh;
+  color:#005866;
+}
+
+.rate-button{
+  position:absolute;
+  top:5vh;
+  width:10vw;
+  height:7.5vh;
+}
+
+.poster-area{
+  position:absolute;
+  display:flex;
+  top:50vh;
+  width:100vw;
+}
+
+.poster{
+  position: relative;
+  width: 50vw;
+  height: 30vw;
+  left: 5vw;
+  z-index: -1;
+}
+
+.poster-img{
+  width: 50vw;
+  height: 30vw;
+}
+
+.similar-genre-image{
+  width: 15vw;
+  height: 10vw;
+}
+
+.d-genres{
+  position:absolute;
+  top:62.5vw;
+  left:5vw;
+  width:95vw;
+  height:5vw
+}
+
+.add-watchlist{
+  background-color:#005866;
+  color: white;
+  position:absolute;
+  left:65vw;
+  width:25vw;
+  top: 61.5vw;
+  height:7.5vh;
+  outline-style: none;
+  border: 1px solid #005866;
+  border-radius: 5px;
+}
+
+.d-details{
+  position:absolute;
+  top:67.5vw;
+  left:5vw;
+  width:50vw;
+  overflow: hidden;
+  min-height: 30vw;
+}
+
+hr{
+  color:white;
+}
+
+.details-header{
+  font-size: 1.25rem;
+  color:white;
+  font-weight:700
+}
+
+.details-name{
+  position:relative;
+  color:white;
+  font-weight:500;
+}
+
+.director-info{
+  display:flex;
+  align-items:center;
+  gap:2vw;
+}
+
+.cast{
+  position:relative;
+  display:flex;
+}
+
+.cast-info{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-evenly;
+  align-items:center;
+  width:45vw;
+}
+
+.d-reviews-box{
+  position:absolute;
+  top:100vw;
+  width:100vw;
+}
+
+.reviews-box{
+  position: relative;
+  left: 5vw;
+  width: 50vw;
+}
+
+.d-reviews{
+  width:50vw;
+  display:grid;
+  row-gap:5vh;
+}
+
+.review-form{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.review-form textarea{
+  width:40vw;
+  height:12.5vh;
+  outline-style:none;
+}
+
+.review-card{
+  position:relative;
+  background-color:black;
+  width:50vw;
+  padding:1.5vw 2.5vw;
+}
+
+.author-info{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:2.5vw;
+  width:50vw;
+  height:15vh;
+  color:white;
+  font-weight:500;
+  font-size:1.25rem;
+}
+
+.author-avatar{
+  width: 5vw;
+  height: 5vw;
+}
+
+.r-remove-button{
+  position:absolute;
+  left: 22.5vw;
+  bottom: 2.5vw;
+  width:1vh;
+  height: 2.5vh;
+  overflow: hidden;
+}
+
+.review-content{
+  color:white;
+  font-weight:500;
+  position:relative;
+  width:45vw;
+}
+
+/*Watchlist*/
+
+.watchlist-star{
+  position: absolute;
+  right: 7.5vw;
+  bottom: 4.5vw;
+  font-size: 1.5rem;
+  color: #005866;
+}
+
+.watchlist-rating{
+  position:absolute;
+  bottom:4.25vw;
+  right:4.5vw;
+  font-size:1.25rem;
+}
+
+.watchlist-rating-total{
+  position:absolute;
+  bottom:4.25vw;
+  right:1.5vw;
+  font-size:1.25rem;
+}
+
+.watchlist-box{
+  position:absolute;
+  top:25vh;
+  width: 100vw;
+}
+
+.watchlist{
+  position: relative;
+  width:60vw;
+  left: 20vw;
+}
+
+.watchlist-title{
+  position: relative;
+  top: 1vw;
+  display: flex;
+  flex-wrap: wrap;
+  width: 32.5vw;
+  overflow: hidden;
+  height: 7.5vw;
+  font-size: 1.5rem;
+}
+
+.watchlist-header{
+  height:20vh;
+  display:grid;
+  place-items:center;
+  background-color:#000000;
+  color:white;
+}
+
+.watchlist-card{
+  position:relative;
+  background-color:#d8d2d2;
+  height:35vw;
+  width: 60vw;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.watchlist-card img{
+  position: relative;
+  bottom: 5vw;
+  margin-left: 1vw;
+  width: 12vw;
+  height: 20vw;
+}
+
+.watchlist-card-info{
+  width:42.5vw;
+  height:10vw;
+  position:absolute;
+  right: 2.5vw;
+  top:1.5vw;
+  overflow: hidden;
+}
+
+.watchlist-info{
+  position: relative;
+  top: 1vw;
+}
+
+.watchlist-overview{
+  width:42.5vw;
+  height:10vw;
+  position:absolute;
+  left:15vw;
+  top:13.5vw;
+  height: 15vw;
+  overflow:hidden;
+}
+
+.w-remove-button{
+  width:6vw;
+  position:absolute;
+  top:13.5vw;
+  right:3vw;
+}
+
+/* Top Rated */
+
+.top-rated{
+  display:grid; 
+  place-items:center;
+  position:absolute;
+  top:110vh;
+  width:100vw
+}
+
+.top-rated-movies-box, .top-rated-shows-box{
+  display: grid;
+  place-items: center;
+  color: white;
+  font-family:'Lobster', cursive;
+  font-size: 2.75rem;
+}
+
+.top-rated-shows-box{
+  margin-top: 5vw;
+}
+
+.top-rated-movies{
+  margin-top: 5vw;
+}
+
+.top-rated-shows{
+  margin-top: 5vw;
+}
+
+.top-rated-card{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Login */
+
+.login-box{
+  position: absolute;
+  top: 25vh;
+  display: grid;
+  place-items: center;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.login-card{
+  position: relative;
+  top: 10vh;
+  margin-bottom: 15vh;
+  max-width: 100vw;
+  min-height: 52.5vh;
+  display: grid;
+  place-items: center;
+  box-shadow:-3px 1px 144px 16px rgba(18,103,135,1) ;
+}
+
+.login-title{
+  position: relative;
+  top: 2.5vh;
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  font-family: 'Lobster', cursive;
+}
+
+.button-box{
+  display: grid;
+  place-items: center;
+  row-gap: 2.5vh;
+}
+
+/* Footer */
+
+.footer{
+  position: relative;
+  display: grid;
+  place-items: center;
+  bottom: 0;
+  margin-top: 5vh;
+  width: 100vw;
+  min-height:20vw ;
+  background-color: #000000;
+  color: white;
+  overflow: none;
+}
+
+.social-media{
+  position: relative;
+  top: 2.5vw;
+  width: 30vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 1.5rem;
+}
+
+.support{
+  position: relative;
+  top: 1.5vw;
+  font-size: 2.5rem;
+  font-family: 'Oswald', sans-serif;
+}
+
+.support-logo{
+  width: 7.5vw;
+  height: 7.5vw;
+}
+
+}
+
+@media(min-width:1080px){
+  .navbar{
+    position: absolute;
+    min-width: 100vw;
+    height: 25vh;
+    background-color:#000000;
+    border-bottom: 1px solid #000000;
+    overflow: hidden;
+  }
+  
+  .navbar-home{
+    position: absolute;
+    width: 100vw;
+    height: 25vh;
+    background-color:transparent;
+    z-index: 1;
+    overflow: hidden;
+  }
+  
+  .logo{
+    position: absolute;
+    font-size: 5rem;
+    top: 5vh;
+    left: 2.5vw;
+    cursor: pointer;
+  }
+  .title{
+    position: absolute;
+    top: 8.5vh;
+    left: 11vw;
+    color: aliceblue;
+    font-family: 'Lobster', cursive;
+    font-size: 3rem;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .search-bar{
+    text-align: center;
+    position: absolute;
+    padding: 2.5vh 0;
+    width: 30vw;
+    top: 9vh;
+    left: 30vw;
+    border-radius: 1rem;
+    border: .1rem solid #005866;
+    outline-style: none;
+    cursor: pointer;
+  }
+  
+  .search-bar-home{
+    text-align: center;
+    position: absolute;
+    padding: 2.5vh 10vw;
+    top: 9vh;
+    left: 30vw;
+    background-color: transparent;
+    border: none;
+    outline-style: none;
+    cursor: pointer;
+    color: white;
+  }
+  
+  .search-bar-home ::placeholder{
+    color: #FFFFFF;
+  }
+  
+  .search-bar:hover{
+    border: .15rem solid #005866;
+    transition: .5s;
+  }
+
+  .navbar .movies{
+    position: absolute;
+    font-size: 1.75rem;
+    top: 10vh;
+    right: 27.5vw;
+    color: aliceblue;
+    font-family: 'Josefin Sans', sans-serif;
+    cursor: pointer;
+  }
+
+  .navbar .tvshows{
+    position: absolute;
+    font-size: 1.75rem;
+    top: 10vh;
+    right: 15vw;
+    color: aliceblue;
+    font-family: 'Josefin Sans', sans-serif;
+    cursor: pointer;
+  }
+
+  .navbar .login{
+    position: absolute;
+    font-size: 1.75rem;
+    top: 10vh;
+    right: 3.5vw;
+    color: aliceblue;
+    font-family: 'Josefin Sans', sans-serif;
+    cursor: pointer;
+  }
+
+  .navbar-home .movies{
+    position: absolute;
+    font-size: 1.75rem;
+    top: 11vh;
+    right: 26.5vw;
+    color: aliceblue;
+    font-family: 'Josefin Sans', sans-serif;
+    cursor: pointer;
+  }
+
+  .navbar-home .tvshows{
+    position: absolute;
+    font-size: 1.75rem;
+    top: 11vh;
+    right: 15vw;
+    color: aliceblue;
+    font-family: 'Josefin Sans', sans-serif;
+    cursor: pointer;
+  }
+
+  .navbar-home .login{
+    position: absolute;
+    font-size: 1.75rem;
+    top: 11vh;
+    right: 3.5vw;
+    color: aliceblue;
+    font-family: 'Josefin Sans', sans-serif;
+    cursor: pointer;
+  }
+  
+  .navbar-home .avatar-dropdown{
+    position: absolute;
+    top: 1vw;
+    width: 20vw;
+    left: 87.5vw;
+    display:flex;
+    align-items: center;
+    text-align:center;
+    height:25vh;
+    overflow: hidden;
+  }
+  
+  .navbar .avatar{
+    width:7.5vh;
+    height:7.5vh;
+    margin-right: 5vw;
+    margin-bottom: 2.5vh;
+  }
+
+  .navbar-home .avatar{
+    width:7.5vh;
+    height:7.5vh;
+    margin-right: 5vw;
+    margin-bottom: 2vw;
+  }
+  
+  .wl-link{
+    text-decoration: none;
+    color: black;
+  }
+  
+  .wl-link:hover{
+    color: black;
+  }
+  
+  .button{
+    background-color: #005866;
+    color: #FFFFFF;
+  }
+  
+  .movies:hover,.title:hover,.tvshows:hover,.login:hover,.avatar:hover{
+    color: #005866;
+    opacity: .8;
+    transition: .5s;
+  }
+  
+  .pagination{
+    position: relative;
+    margin-top: 2.5vw;
+    left: 40%;
+    color: white;
+  }
+  
+  /* Detail-view */
+  
+  .title-box{
+    width: 45vw;
+    max-height: 15vw;
+    position: absolute;
+    top:15.5vw;
+    left:5vw;
+    font-size: 2.25rem;
+    color:#FFFFFF;
+  }
+  
+  .d-rating{
+    position: absolute;
+    right: 30vw;
+    top: 16vw;
+    color: #FFFFFF;
+    font-size: 1.75rem;
+  }
+  
+  .d-rate{
+    position: absolute;
+    right: 37.5vw;
+    font-size: 2rem;
+    top: 19.5vw;
+    color: #005866;
+  }
+  
+  .d-ratingno{
+    position: absolute;
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    right: 34vw;
+    top: 19.5vw;
+    font-weight: bolder;
+  }
+  
+  .total-score{
+    position: absolute;
+    color: #d8d2d2;
+    font-size: 1.25rem;
+    right: 31.5vw;
+    top: 19.75vw;
+  }
+  
+  .total-vote{
+    position: absolute;
+    color: #d8d2d2;
+    font-size: 1rem;
+    right: 34vw;
+    top: 22.5vw;
+  }
+  
+  .u-rating{
+    position: absolute;
+    right: 10vw;
+    top: 16vw;
+    color: #FFFFFF;
+    font-size: 1.75rem;
+  }
+  
+  .u-rate{
+    position: relative;
+    left: 1vw;
+    top: 1vh;
+    color: #005866;
+  }
+  
+  .rate{
+    position: absolute;
+    color: #005866;
+    font-size: 1.75rem;
+    right: 11.5vw;
+    top: 19.5vw;
+    font-weight: 700;
+    outline-style: none;
+    background-color:#151513;
+    border: none;
+    display: flex;
+    justify-content:space-between;
+    width: 9vw;
+    height: 15vh;
+    overflow: hidden;
+  }
+  
+  .user-rating{
+    width: 9.25vw;
+    height: 15vh;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .d-info{
+    position: absolute;
+    left: 5vw;
+    top: 23.5vw;
+    color:#d8d2d2;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    min-width: 15vw;
+  }
+  
+  .inactive{
+    display: none;
+  }
+  
+  .active{
+    display: flex;
+  }
+  
+  .rating-form{
+    position: absolute;
+    background-color:#3d3d3b;
+    color: #FFFFFF;
+    width: 40vw;
+    height: 50vh;
+    top: 40vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    left:30vw;
+    overflow: hidden;
+  }
+  
+  .clear{
+    position:absolute;
+    top:5px;
+    right:5px;
+    cursor:pointer;
+    color:white;
+  }
+  
+  .rate-this{
+    position:absolute;
+    top:5vh;
+    color:white;
+    font-size: 1.25rem;
+  }
+  
+  .rating-title{
+    position:absolute;
+    top: 12.5vh;
+    color:white;
+    font-size: 1.5rem;
+  }
+  
+  .rating-value{
+    position:absolute;
+    top:20vh;
+    width:22.5vw;
+    height:10vh;
+    color:#005866;
+  }
+  
+  .rate-button{
+    position:absolute;
+    top:5vh;
+    width:10vw;
+    height:7.5vh;
+  }
+  
+  .poster-area{
+    position:absolute;
+    display:flex;
+    top:26.5vw;
+    width:100vw;
+  }
+  
+  .poster{
+    position: relative;
+    width: 50vw;
+    height: 30vw;
+    left: 5vw;
+    z-index: -1;
+  }
+  
+  .poster-img{
+    width: 50vw;
+    height: 30vw;
+  }
+  
+  .similar-genre-image{
+    width: 15vw;
+    height: 10vw;
+  }
+  
+  .d-genres{
+    position:absolute;
+    top:58.5vw;
+    left:5vw;
+    width:95vw;
+  }
+  
+  .add-watchlist{
+    background-color:#005866;
+    color: white;
+    position:absolute;
+    left:65vw;
+    width:25vw;
+    top: 57.5vw;
+    height:7.5vh;
+    outline-style: none;
+    border: 1px solid #005866;
+    border-radius: 5px;
+  }
+  
+  .d-details{
+    position:absolute;
+    top:62.5vw;
+    left:5vw;
+    width:50vw;
+  }
+  
+  hr{
+    color:white;
+  }
+  
+  .details-header{
+    font-size: 1.25rem;
+    color:white;
+    font-weight:700
+  }
+  
+  .details-name{
+    position:relative;
+    color:white;
+    font-weight:500;
+  }
+  
+  .director-info{
+    display:flex;
+    align-items:center;
+    gap:2vw;
+  }
+  
+  .cast{
+    position:relative;
+    display:flex;
+  }
+  
+  .cast-info{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-evenly;
+    align-items:center;
+    width:45vw;
+  }
+  
+  .d-reviews-box{
+    position:absolute;
+    top:100vw;
+    width:100vw;
+  }
+  
+  .reviews-box{
+    position: relative;
+    left: 5vw;
+    width: 50vw;
+  }
+  
+  .d-reviews{
+    width:50vw;
+    display:grid;
+    row-gap:2.5vh;
+  }
+  
+  .review-form{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  
+  .review-form textarea{
+    width:42.5vw;
+    height:12.5vh;
+    outline-style:none;
+  }
+  
+  .review-card{
+    position:relative;
+    background-color:black;
+    width:50vw;
+    padding:1.5vw 2.5vw;
+  }
+  
+  .author-info{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    gap:2.5vw;
+    width:50vw;
+    height:15vh;
+    color:white;
+    font-weight:500;
+    font-size:1.25rem;
+  }
+
+  .author-avatar{
+    width: 5vw;
+    height: 5vw;
+  }
+  
+  .r-remove-button{
+    position:absolute;
+    left: 22.5vw;
+    bottom: 2.5vw;
+    width:1vh;
+    height: 2.5vh;
+    overflow: hidden;
+  }
+  
+  .review-content{
+    color:white;
+    font-weight:500;
+    position:relative;
+    width:45vw;
+  }
+  
+  /*Watchlist*/
+  
+  .watchlist-star{
+    position: absolute;
+    right: 7.5vw;
+    bottom: 10vw;
+    font-size: 1.5rem;
+    color: #005866;
+  }
+  
+  .watchlist-rating{
+    position:absolute;
+    bottom:9.75vw;
+    right:5vw;
+    font-size:1.25rem;
+  }
+  
+  .watchlist-rating-total{
+    position:absolute;
+    bottom:9.75vw;
+    right:2.5vw;
+    font-size:1.25rem;
+  }
+  
+  .watchlist-box{
+    position:absolute;
+    top:25vh;
+    width: 100vw;
+  }
+
+  .watchlist{
+    position: relative;
+    width:60vw;
+    left: 20vw;
+  }
+  
+  .watchlist-title{
+    display: flex;
+    flex-wrap: wrap;
+    width: 35vw;
+    overflow: hidden;
+    height: 5.5vw;
+    font-size: 1.5rem;
+  }
+  
+  .watchlist-header{
+    height:20vh;
+    display:grid;
+    place-items:center;
+    background-color:#000000;
+    color:white;
+  }
+  
+  .watchlist-card{
+    position:relative;
+    background-color:#d8d2d2;
+    height:25vw;
+    width: 60vw;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  
+  .watchlist-card img{
+    margin-left: 1vw;
+    width: 12vw;
+    height: 20vw;
+  }
+  
+  .watchlist-card-info{
+    width:42.5vw;
+    height:12.5vw;
+    position:absolute;
+    left:15vw;
+    top:2.5vw;
+  }
+
+  .watchlist-info{
+    position: relative;
+    top: 1vw;
+  }
+  
+  .watchlist-overview{
+    width: 42.5vw;
+    position: absolute;
+    left: 15vw;
+    top: 11.5vw;
+    height: 8vw;
+    overflow: hidden;
+  }
+  
+  .w-remove-button{
+    position:absolute;
+    top: 10vw;
+    right: 2.5vw;
+    width:6.5vw;
+    height:2.5vw;
+    overflow: hidden;
+  }
+  
+  /* Top Rated */
+  
+  .top-rated{
+    display:grid; 
+    place-items:center;
+    position:absolute;
+    top:62.5vw;
+    width:100vw
+  }
+  
+  .top-rated-movies-box, .top-rated-shows-box{
+    display: grid;
+    place-items: center;
+    color: white;
+    font-family:'Lobster', cursive;
+    font-size: 2.75rem;
+  }
+  
+  .top-rated-shows-box{
+    margin-top: 5vw;
+  }
+  
+  .top-rated-movies{
+    margin-top: 5vw;
+  }
+  
+  .top-rated-shows{
+    margin-top: 5vw;
+  }
+  
+  .top-rated-card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  /* Login */
+  
+  .login-box{
+    position: absolute;
+    top: 25vh;
+    display: grid;
+    place-items: center;
+    width: 100vw;
+    overflow: hidden;
+  }
+  
+  .login-card{
+    position: relative;
+    top: 10vh;
+    margin-bottom: 15vh;
+    max-width: 100vw;
+    min-height: 52.5vh;
+    display: grid;
+    place-items: center;
+    box-shadow:-3px 1px 144px 16px rgba(18,103,135,1) ;
+  }
+  
+  .login-title{
+    position: relative;
+    top: 2.5vh;
+    display: grid;
+    place-items: center;
+    font-size: 2rem;
+    font-family: 'Lobster', cursive;
+  }
+  
+  .button-box{
+    display: grid;
+    place-items: center;
+    row-gap: 2.5vh;
+  }
+
+  /* Footer */
+
+  .footer{
+    position: relative;
+    display: grid;
+    place-items: center;
+    bottom: 0;
+    margin-top: 5vh;
+    width: 100vw;
+    min-height:20vw ;
+    background-color: #000000;
+    color: white;
+    overflow: none;
+  }
+
+  .social-media{
+    position: relative;
+    top: 2.5vw;
+    width: 30vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 1.5rem;
+  }
+
+  .support{
+    position: relative;
+    top: 1.5vw;
+    font-size: 2.5rem;
+    font-family: 'Oswald', sans-serif;
+  }
+
+  .support-logo{
+    width: 7.5vw;
+    height: 7.5vw;
+  }
+}
+
