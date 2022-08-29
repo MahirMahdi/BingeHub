@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import { Box, Grid, ImageListItem, ImageListItemBar, IconButton } from "@mui/material";
 import { AuthContext } from "../contexts/AuthContext.js";
+import { Link } from 'react-router-dom';
 
 
 export default function TopRatedMovies(){
@@ -23,7 +24,7 @@ export default function TopRatedMovies(){
             <Grid container spacing={{xs:2, sm:3}} columns={{xs:4, sm:8, md:12}}>
                 {topRatedMovies.map((movie) => (
                     <Grid item xs={4} sm={4} md={4} className="top-rated-card">
-                        {currentUser ? <a href={`/detail/movie/${movie.id}/${currentUser && currentUser.uid}`} underline="none">
+                        {currentUser ? <Link to={`/detail/movie/${movie.id}/${currentUser && currentUser.uid}`} underline="none">
                             <ImageListItem key={movie.backdrop_path}>
                                 <img
                                     src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
@@ -42,7 +43,7 @@ export default function TopRatedMovies(){
                                 }
                                 />
                             </ImageListItem>
-                        </a>: <a href="/login" underline="none">
+                        </Link>: <Link to="/login" underline="none">
                         <ImageListItem key={movie.backdrop_path}>
                                 <img
                                     src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
@@ -61,7 +62,7 @@ export default function TopRatedMovies(){
                                 }
                                 />
                             </ImageListItem>
-                        </a>}
+                        </Link>}
                     </Grid>
                 ))}
             </Grid>

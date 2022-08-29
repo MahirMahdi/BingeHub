@@ -2,6 +2,7 @@ import { Box,Card,CardMedia,Typography} from "@mui/material";
 import { useState } from "react";
 import { BsStarFill,BsStar } from "react-icons/bs/index.esm.js";
 import RatingForm from "./RatingForm.js";
+import { Link } from 'react-router-dom';
 
 export default function TopView({id,user_id,type,id_1,id_2,id_3,id_4,name,title,user_rating,rating,totalVote,date,time,status,tdate,ttime,image,img1,img2,img3,img4}){
     const [formState, setFormState] = useState("inactive")
@@ -44,38 +45,38 @@ export default function TopView({id,user_id,type,id_1,id_2,id_3,id_4,name,title,
                         />
                 </Card>
                 <Box className="similar-genre-area">
-                    <a href={`/detail/${type}/${id_1}/${user_id}`}>
+                    <Link to={`/detail/${type}/${id_1}/${user_id}`}>
                         <Card>
                             <CardMedia 
                             component="img"
                             className="similar-genre-image"
                             image={`https://image.tmdb.org/t/p/original`+ img1}/>
                         </Card>
-                    </a>
-                    <a href={`/detail/${type}/${id_2}/${user_id}`}>
+                    </Link>
+                    <Link to={`/detail/${type}/${id_2}/${user_id}`}>
                         <Card>
                             <CardMedia 
                             component="img"
                             className="similar-genre-image"
                             image={`https://image.tmdb.org/t/p/original`+ img2}/>
                         </Card>
-                    </a>
-                    <a href={`/detail/${type}/${id_3}/${user_id}`}>
+                    </Link>
+                    <Link to={`/detail/${type}/${id_3}/${user_id}`}>
                         <Card>
                             <CardMedia 
                             component="img"
                             className="similar-genre-image"
                             image={`https://image.tmdb.org/t/p/original`+ img3}/>
                         </Card>
-                    </a>
-                    <a href={`/detail/${type}/${id_4}/${user_id}`}>
+                    </Link>
+                    <Link to={`/detail/${type}/${id_4}/${user_id}`}>
                         <Card>
                             <CardMedia 
                             component="img"
                             className="similar-genre-image"
                             image={`https://image.tmdb.org/t/p/original`+ img4}/>
                         </Card>
-                    </a>
+                    </Link>
                 </Box>
             </Box>
             <RatingForm type_id={id} hideForm={hideForm} title={title} name={name} formState={formState} buttonState={false}/>
