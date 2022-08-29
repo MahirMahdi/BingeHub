@@ -43,7 +43,7 @@ export default function TopView({id,user_id,type,id_1,id_2,id_3,id_4,name,title,
                         image={`https://image.tmdb.org/t/p/original`+ image}
                         />
                 </Card>
-                <Box sx={{display:"flex", alignItems:"center",flexWrap:"wrap",width:"45vw",marginLeft:"5vw",justifyContent:"space-evenly"}}>
+                <Box className="similar-genre-area">
                     <a href={`/detail/${type}/${id_1}/${user_id}`}>
                         <Card>
                             <CardMedia 

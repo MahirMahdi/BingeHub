@@ -1,7 +1,7 @@
 import { Icon } from '@iconify/react';
 import React,{ useState,useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext.js';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import AvatarDropdown from './AvatarDropdown.js';
 
 
@@ -22,14 +22,14 @@ export default function Navbar(){
         <div>
             <div className="navbar">
                 <Icon icon="emojione:film-projector" className='logo'/>
-                <a href="/"><h1 className='title'>BingeHub</h1></a>
+                <Link to="/"><h1 className='title'>BingeHub</h1></Link>
                 <form onSubmit={submitSearch}>
                     <input type="search" onChange={updateSearch} value={search} className='search-bar' placeholder='Search...'/>
                 </form>
-                <a href="/movies/1" ><p className='movies'>Movies</p></a>
-                <a href="/tvshows/1" ><p className='tvshows'>TV Shows</p></a>
+                <Link to="/movies/1" ><p className='movies'>Movies</p></Link>
+                <Link to="/tvshows/1" ><p className='tvshows'>TV Shows</p></Link>
                 {currentUser && <AvatarDropdown/>}
-                {!currentUser && <a href="/login" ><p className='login'>Login</p></a>}
+                {!currentUser && <Link to="/login" ><p className='login'>Login</p></Link>}
             </div>
         </div>
     )

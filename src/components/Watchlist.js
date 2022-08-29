@@ -30,10 +30,9 @@ export default function Watchlist(){
         getUserData();
     },[]);
 
-    console.log(userData);
     return(
         <div>
-            {userData && 
+            { userData && userData.watchlist.length != 0?
                 <Box className="watchlist-box">
                     <Box className="watchlist">
                         <Box className="watchlist-header">
@@ -54,7 +53,15 @@ export default function Watchlist(){
                         </Box>
                     </Box>
                     <Footer/>
-                </Box>}
+                </Box> : <Box className="watchlist-box">
+                            <Box className="watchlist">
+                                <Box className="watchlist-header">
+                                    <Typography variant="h5">Watchlist is empty</Typography>
+                                </Box>
+                            </Box>
+                            <Footer/>
+                        </Box>
+                        }
             </div>
         )
     };

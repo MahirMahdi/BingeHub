@@ -9,7 +9,7 @@ import Login from './pages/Login.js';
 import WatchList from './pages/WatchList.js';
 import Detail from './pages/Detail.js';
 import AuthProvider from './contexts/AuthContext.js';
-import { BrowserRouter as Router,Route,Routes} from "react-router-dom";
+import { HashRouter as Router,Route,Routes} from "react-router-dom";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 function App(){

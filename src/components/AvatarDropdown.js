@@ -4,7 +4,7 @@ import { Logout,Add } from '@mui/icons-material';
 import { AuthContext } from '../contexts/AuthContext.js';
 import { auth } from "../firebase.js";
 import { signOut } from "firebase/auth";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 export default function AvatarDropdown(){
     const [anchorEl, setAnchorEl] = useState(null);
@@ -79,12 +79,12 @@ export default function AvatarDropdown(){
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
                 <MenuItem sx={{'&:hover':{backgroundColor:"#005866"}}}>
-                <a href={`/watchlist/${currentUser.uid}`} className='wl-link'>
+                <Link to={`/watchlist/${currentUser.uid}`} className='wl-link'>
                     <ListItemIcon>
                         <Add fontSize="small" />
                     </ListItemIcon>
                         Watchlist
-                </a>
+                </Link>
                 </MenuItem>
                 <MenuItem onClick={LogOut} sx={{'&:hover':{backgroundColor:"#005866"}}}>
                 <ListItemIcon>

@@ -370,8 +370,17 @@ body{
 }
 
 .poster-img{
-  width: 60vw;
-  height: 35vw;
+  width: 55vw;
+  height: 32.5vw;
+}
+
+.similar-genre-area{
+  width:45vw;
+  margin-left: 5vw;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 .similar-genre-image{
@@ -973,7 +982,7 @@ body{
   
   .u-rate{
     position: relative;
-    left: 2vw;
+    left: 1vw;
     top: .75vw;
     color: #005866;
   }
@@ -983,7 +992,7 @@ body{
     position: absolute;
     color: #005866;
     font-size: 1.75rem;
-    right: 7.5vw;
+    right: 6vw;
     top: 19.75vh;
     font-weight: 700;
     outline-style: none;
@@ -992,7 +1001,7 @@ body{
     display: flex;
     align-items: center;
     justify-content:space-between;
-    width: 15vw;
+    width: 17.5vw;
     height: 10vw;
     overflow: hidden;
   }
@@ -1093,6 +1102,16 @@ body{
   width: 60vw;
   height: 35vw;
 }
+
+.similar-genre-area{
+  width:45vw;
+  margin-left: 5vw;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
 
 .similar-genre-image{
   width: 15vw;
@@ -1806,6 +1825,16 @@ body{
   height: 30vw;
 }
 
+.similar-genre-area{
+  width:45vw;
+  margin-left: 5vw;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+
 .similar-genre-image{
   width: 15vw;
   height: 10vw;
@@ -2420,7 +2449,7 @@ hr{
     position: absolute;
     color: #005866;
     font-size: 1.75rem;
-    right: 11.5vw;
+    right: 10.5vw;
     top: 19.5vw;
     font-weight: 700;
     outline-style: none;
@@ -2428,7 +2457,7 @@ hr{
     border: none;
     display: flex;
     justify-content:space-between;
-    width: 9vw;
+    width: 10.5vw;
     height: 15vh;
     overflow: hidden;
   }
@@ -2526,9 +2555,20 @@ hr{
   }
   
   .poster-img{
+    object-fit: cover;
     width: 50vw;
     height: 30vw;
   }
+
+  .similar-genre-area{
+    width:45vw;
+    margin-left: 5vw;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  
   
   .similar-genre-image{
     width: 15vw;
@@ -2849,7 +2889,7 @@ hr{
     display: grid;
     place-items: center;
     bottom: 0;
-    margin-top: 5vh;
+    margin-top: 10vh;
     width: 100vw;
     min-height:20vw ;
     background-color: #000000;
