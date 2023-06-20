@@ -1,14 +1,14 @@
 import { Icon } from "@iconify/react";
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext.js";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AvatarDropdown from "./AvatarDropdown.js";
 import IconButton from "@mui/material/IconButton/index.js";
 import Avatar from "@mui/material/Avatar/Avatar.js";
 import { auth } from "../../firebase.js";
 import { signOut } from "firebase/auth";
 
-export default function Navbar({ home }) {
+export default function Navbar() {
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useContext(AuthContext);
   const [search, setSearch] = useState("");
@@ -35,27 +35,36 @@ export default function Navbar({ home }) {
 
   return (
     <>
-      <div className="navbar" id={home && "navbar-home"}>
+      <div className="navbar">
         <div className="logo-title">
           <Icon icon="emojione:film-projector" className="logo" />
-          <a href="/">
+          <Link to="/">
             <h1 className="title">BingeHub</h1>
-          </a>
+          </Link>
         </div>
         <form onSubmit={submitSearch}>
           <input
             type="search"
             onChange={updateSearch}
             value={search}
-            className={`search-bar ${home && "search-bar-home"}`}
+            className="search-bar"
             placeholder="Search..."
           />
+          to
         </form>
         <div className="normal-nav">
-          <a href="/movies/1">Movies</a>
-          <a href="/tvshows/1">TV Shows</a>
+          <Link className="link-color" to="/movies/1">
+            Movies
+          </Link>
+          <Link className="link-color" to="/tvshows/1">
+            TV Shows
+          </Link>
           {currentUser && <AvatarDropdown handleLogout={handleLogout} />}
-          {!currentUser && <a href="/login">Login</a>}
+          {!currentUser && (
+            <Link className="link-color" to="/login">
+              Login
+            </Link>
+          )}
         </div>
         <div className="mobile-nav">
           <IconButton
@@ -103,8 +112,12 @@ export default function Navbar({ home }) {
           <p>{currentUser?.displayName.split(" ")[0]}</p>
         </div>
         <div className="navbar-content">
-          <a href="/movies/1">Movies</a>
-          <a href="/tvshows/1">TV Shows</a>
+          <Link className="link-color" to="/movies/1">
+            Movies
+          </Link>
+          <Link className="link-color" to="/tvshows/1">
+            TV Shows
+          </Link>
           {currentUser && (
             <a href={`/watchlist/${currentUser.uid}`}>Watchlist</a>
           )}
