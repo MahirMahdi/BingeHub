@@ -1,9 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../firebase.js";
-import { updateDoc, setDoc, doc, getDoc, arrayUnion } from "firebase/firestore";
+import {
+  updateDoc,
+  setDoc,
+  doc,
+  getDoc,
+  arrayUnion,
+  arrayRemove,
+} from "firebase/firestore";
 import { Box, Typography, Card, CardMedia, Chip, Button } from "@mui/material";
-import Review from "../components/DetailView/Review.js";
+import { AuthContext } from "../contexts/AuthContext.js";
 import ReviewCard from "../components/DetailView/ReviewCard.js";
 import GenreCard from "../components/DetailView/GenreCard.js";
 import RatingForm from "../components/DetailView/RatingForm.js";
@@ -19,6 +26,18 @@ export default function Detail() {
   const [reviews, setReviews] = useState();
   const [reviewInfo, setReviewInfo] = useState();
   const [formState, setFormState] = useState("inactive");
+  const [review, setReview] = useState();
+  const [currentUser] = useContext(AuthContext);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleModalOpen = () => {
+    setModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setModalOpen(false);
+  };
+
   const params = useParams();
   const type = params.type;
   const id = params.id;
@@ -119,14 +138,54 @@ export default function Detail() {
     setReviews(data.results);
   }
 
+  function handleChange(e) {
+    setReview(e.target.value);
+  }
+
+  async function submitReview(review) {
+    const review_doc = {
+      type_id: id,
+      review: review,
+      author_id: currentUser.uid,
+      author: currentUser.displayName,
+      image: currentUser.photoURL,
+    };
+
+    const doc = await getDoc(reviewRef);
+
+    if (doc.exists()) {
+      await updateDoc(reviewRef, { reviews: arrayUnion(review_doc) });
+    } else {
+      await setDoc(reviewRef, { reviews: [review_doc] });
+    }
+
+    setReview("");
+  }
+
+  async function removeReview(review) {
+    const delete_doc = {
+      author: currentUser.displayName,
+      author_id: currentUser.uid,
+      image: currentUser.photoURL,
+      review: review.review,
+      type_id: id,
+    };
+    await updateDoc(reviewRef, { reviews: arrayRemove(delete_doc) });
+
+    setModalOpen(false);
+  }
+
   useEffect(() => {
     getDetailData();
     getSimilarGenre();
     getUserData();
     getCredits();
+  }, [type, id]);
+
+  useEffect(() => {
     getReviews();
     getUserReviews();
-  }, [type, id]);
+  }, [id, submitReview, removeReview]);
 
   return (
     <>
@@ -279,16 +338,35 @@ export default function Detail() {
             </Typography>
             <hr style={{ color: "white" }} />
             <Box className="d-reviews">
-              <Review type_id={id} />
+              <Box className="review-form">
+                <textarea
+                  value={review}
+                  onChange={handleChange}
+                  placeholder="Add a review..."
+                ></textarea>
+                <Button
+                  className="review-button"
+                  variant="contained"
+                  onClick={() => {
+                    submitReview(review);
+                  }}
+                  sx={{ backgroundColor: "#005866" }}
+                >
+                  Submit
+                </Button>
+              </Box>
               {reviewInfo && reviewInfo.length !== 0
                 ? reviewInfo.map((review, i) => (
                     <ReviewCard
                       key={i}
-                      type_id={id}
                       user_id={review.author_id}
                       image={review.image}
                       content={review.review}
                       author={review.author}
+                      handleOpen={handleModalOpen}
+                      open={modalOpen}
+                      handleClose={handleModalClose}
+                      handleRemove={() => removeReview(review)}
                     />
                   ))
                 : null}
