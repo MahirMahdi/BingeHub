@@ -9,12 +9,19 @@ import {
   arrayUnion,
   arrayRemove,
 } from "firebase/firestore";
-import { Box, Typography, Card, CardMedia, Chip, Button } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Card,
+  CardMedia,
+  Chip,
+  Button,
+  Rating,
+} from "@mui/material";
 import { AuthContext } from "../contexts/AuthContext.js";
 import ReviewCard from "../components/DetailView/ReviewCard.js";
 import GenreCard from "../components/DetailView/GenreCard.js";
-import RatingForm from "../components/DetailView/RatingForm.js";
-import { Add } from "@mui/icons-material";
+import { Add, Delete, Clear } from "@mui/icons-material";
 import RatingDetails from "../components/DetailView/RatingDetails.js";
 
 export default function Detail() {
@@ -29,14 +36,8 @@ export default function Detail() {
   const [review, setReview] = useState();
   const [currentUser] = useContext(AuthContext);
   const [modalOpen, setModalOpen] = useState(false);
-
-  const handleModalOpen = () => {
-    setModalOpen(true);
-  };
-
-  const handleModalClose = () => {
-    setModalOpen(false);
-  };
+  const [watchlist, setWatchlist] = useState();
+  const [rating, setRating] = useState();
 
   const params = useParams();
   const type = params.type;
@@ -54,6 +55,14 @@ export default function Detail() {
     overview: details.overview,
   };
 
+  function handleModalOpen() {
+    setModalOpen(true);
+  }
+
+  function handleModalClose() {
+    setModalOpen(false);
+  }
+
   function showForm() {
     setFormState("active");
   }
@@ -62,18 +71,30 @@ export default function Detail() {
     setFormState("inactive");
   }
 
-  localStorage.setItem("userID", user_id);
+  async function submitRating(value) {
+    const rating_doc = { type_id: id, rate: value };
+    const doc = await getDoc(userRef);
+    if (doc.exists()) {
+      await updateDoc(userRef, { ratings: arrayUnion(rating_doc) });
+    } else {
+      await setDoc(userRef, { user_id: user_id, ratings: [rating_doc] });
+    }
 
-  const handleWatchlist = async () => {
+    setFormState("inactive");
+  }
+
+  async function addToWatchlist() {
     const doc = await getDoc(userRef);
     if (doc.exists()) {
       await updateDoc(userRef, { watchlist: arrayUnion(watchlist_doc) });
-      window.location.reload();
     } else {
       await setDoc(userRef, { user_id: user_id, watchlist: [watchlist_doc] });
-      window.location.reload();
     }
-  };
+  }
+
+  async function removeFromWatchlist() {
+    await updateDoc(userRef, { watchlist: arrayRemove(watchlist_doc) });
+  }
 
   async function getUserData() {
     const doc = await getDoc(userRef);
@@ -82,6 +103,7 @@ export default function Detail() {
       const user_ratings = data.ratings.filter(
         (rating) => rating.type_id === id
       );
+      setWatchlist(data.watchlist);
       setRatingInfo(user_ratings[0]);
     } else {
       console.log("No such document");
@@ -176,14 +198,17 @@ export default function Detail() {
   }
 
   useEffect(() => {
+    getUserData();
+  }, [addToWatchlist, removeFromWatchlist, submitRating]);
+
+  useEffect(() => {
     getDetailData();
     getSimilarGenre();
-    getUserData();
     getCredits();
+    getReviews();
   }, [type, id]);
 
   useEffect(() => {
-    getReviews();
     getUserReviews();
   }, [id, submitReview, removeReview]);
 
@@ -264,14 +289,51 @@ export default function Detail() {
               ))}
             </Box>
           </Box>
-          <RatingForm
-            type_id={id}
-            hideForm={hideForm}
-            title={details?.title}
-            name={details?.name}
-            formState={formState}
-            buttonState={false}
-          />
+          <Card
+            className={`rating-form ${formState}`}
+            sx={{ backgroundColor: "#3d3d3b" }}
+          >
+            <Clear onClick={hideForm} className="clear" />
+            <Typography variant="inherit" className="rate-this">
+              RATE THIS
+            </Typography>
+            {details?.title && (
+              <Typography variant="inherit" className="rating-title">
+                {details?.title}
+              </Typography>
+            )}
+            {details?.name && (
+              <Typography variant="inherit" className="rating-title">
+                {details?.name}
+              </Typography>
+            )}
+            <Rating
+              defaultValue={0}
+              onChange={(event, newValue) => {
+                setRating(newValue);
+              }}
+              value={rating}
+              max={10}
+              size="large"
+              precision={1}
+              className="rating-value"
+              sx={{ color: "#005866" }}
+            />
+            <Button
+              variant="contained"
+              className="rate-button"
+              onClick={() => {
+                submitRating(rating);
+              }}
+              disabled={!rating && true}
+              sx={{
+                backgroundColor: "#005866",
+                "&:hover": { backgroundColor: "#04363d" },
+              }}
+            >
+              Rate
+            </Button>
+          </Card>
           <span className="big-screen-watchlist">
             <div className="d-genres">
               {details.genres.map((genre, i) => (
@@ -291,19 +353,39 @@ export default function Detail() {
                 totalVote={details?.vote_count}
                 mobile={true}
               />
-              <Button
-                startIcon={<Add />}
-                sx={{
-                  backgroundColor: "#005866",
-                  color: "white",
-                  height: "max-content",
-                  width: "max-content",
-                  padding: ".5rem",
-                }}
-                onClick={handleWatchlist}
-              >
-                Add to Watchlist
-              </Button>
+              {watchlist?.filter(
+                (doc) =>
+                  doc.title === details.title || doc.title === details.name
+              ).length === 0 ? (
+                <Button
+                  startIcon={<Add />}
+                  sx={{
+                    backgroundColor: "#005866",
+                    color: "white",
+                    height: "max-content",
+                    width: "max-content",
+                    padding: ".5rem",
+                  }}
+                  onClick={addToWatchlist}
+                >
+                  Add to Watchlist
+                </Button>
+              ) : (
+                <Button
+                  startIcon={<Delete />}
+                  variant="contained"
+                  color="error"
+                  sx={{
+                    color: "white",
+                    height: "max-content",
+                    width: "max-content",
+                    padding: ".5rem",
+                  }}
+                  onClick={removeFromWatchlist}
+                >
+                  Remove from Watchlist
+                </Button>
+              )}
             </div>
           </span>
           <div className="d-details">
