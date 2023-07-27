@@ -1,14 +1,16 @@
 import Navbar from "./Navbar/Navbar.js";
 import Footer from "./Footer.js";
 
-export default function Layout({ children, nav_type }) {
+export default function Layout({ children }) {
   return (
-    <div className="wrapper">
-      <header>
-        <Navbar home={nav_type} />
-      </header>
-      <main>{children}</main>
+    <>
+      <div className="wrapper">
+        <header>
+          <Navbar />
+        </header>
+        <main>{children}</main>
+      </div>
       <Footer />
-    </div>
+    </>
   );
 }
