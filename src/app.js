@@ -1,6 +1,6 @@
 import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-import { CircularProgress } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 import Home from "./pages/Home.js";
 const Search = lazy(() => import("./pages/Search.js"));
 const Movies = lazy(() => import("./pages/Movies.js"));
@@ -12,7 +12,20 @@ const Detail = lazy(() => import("./pages/Detail.js"));
 
 export default function App() {
   return (
-    <Suspense fallback={<CircularProgress />}>
+    <Suspense
+      fallback={
+        <Box
+          sx={{
+            width: "100%",
+            height: "100%",
+            display: "grid",
+            placeItems: "center",
+          }}
+        >
+          <CircularProgress />
+        </Box>
+      }
+    >
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
