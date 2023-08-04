@@ -7,6 +7,7 @@
 
 body {
   background-color: #151513;
+  padding-right: 0 !important;
 }
 
 a {
@@ -1735,6 +1736,20 @@ a {
     width: 7.5vw;
     height: 7.5vw;
   }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #64748b;
+  border-radius: 15px;
 }
 
 @keyframes navbarExpand {
