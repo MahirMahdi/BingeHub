@@ -46,7 +46,7 @@ export default function Watchlist() {
 
   return (
     <>
-      {userData && userData.watchlist.length != 0 ? (
+      {userData && userData.watchlist.length !== 0 ? (
         <Box className="watchlist-box">
           <Box className="watchlist">
             <Box className="watchlist-header">

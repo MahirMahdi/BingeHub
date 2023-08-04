@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Card, Button, Box, Typography } from "@mui/material";
 import { auth, provider, facebook_provider } from "../firebase.js";
 import { signInWithPopup } from "firebase/auth";
@@ -8,31 +8,31 @@ import { BsGoogle, BsFacebook } from "react-icons/bs/index.esm.js";
 
 export default function Login() {
   const navigate = useNavigate();
-  const [setCurrentUser] = useContext(AuthContext);
+  const [currentUser, setCurrentUser] = useContext(AuthContext);
 
-  function popUpSignInGoogle() {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        const user = result.user;
-        setCurrentUser(user);
-        navigate("/");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  async function popUpSignInGoogle() {
+    try {
+      const data = signInWithPopup(auth, provider);
+      setCurrentUser(data.user);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
-  function popUpSignInFacebook() {
-    signInWithPopup(auth, facebook_provider)
-      .then((result) => {
-        const user = result.user;
-        setCurrentUser(user);
-        navigate("/");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  async function popUpSignInFacebook() {
+    try {
+      const data = signInWithPopup(auth, facebook_provider);
+      setCurrentUser(data.user);
+    } catch (error) {
+      console.log(error);
+    }
   }
+
+  useEffect(() => {
+    if (currentUser) {
+      navigate("/");
+    }
+  }, [currentUser]);
 
   return (
     <Box className="login-box">
